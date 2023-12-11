@@ -76,21 +76,21 @@ const Home = () => {
 
     return (
         <View className="Home">
-            <Heading level={1}>My Books App</Heading>
+            <h1 className="add-books-heading">Add Books</h1>
             <View as="form" margin="3rem 0" onSubmit={createBook}>
                 <Flex direction="row" justifyContent="center">
                     <TextField
                         name="name"
-                        placeholder="Note Name"
-                        label="Note Name"
+                        placeholder="Book Name"
+                        label="Book Name"
                         labelHidden
                         variation="quiet"
                         required
                     />
                     <TextField
                         name="description"
-                        placeholder="Note Description"
-                        label="Note Description"
+                        placeholder="Book Description"
+                        label="Book Description"
                         labelHidden
                         variation="quiet"
                         required
@@ -98,7 +98,7 @@ const Home = () => {
                     <View
                         name="image"
                         as="input"
-                        type="image/jpeg"
+                        type="file"
                         style={{ alignSelf: "end" }}
                     />
                     <Button type="submit" variation="primary">

@@ -72,8 +72,21 @@ const Books = () => {
     }
     return (
         <>
-            <Heading level={2}>Current Books</Heading>
+            <h1 className="add-books-heading">Current Books</h1>
             <View margin="3rem 0">
+                <Flex
+                    direction="row"
+                    justifyContent="centre"
+                    alignItems="centre"
+                    style={{ fontWeight: 'bold' }}
+                >
+                    <div style={{ width: '30%', textAlign: 'center' }}>Name</div>
+                    <div style={{ width: '40%', textAlign: 'center' }}>Description</div>
+                    <div style={{ width: '20%', textAlign: 'center' }}>Image</div>
+                    <div style={{ width: '10%', textAlign: 'center' }}>Delete</div>
+
+                </Flex>
+
                 {books.map((book) => (
                     <Flex
                         key={book.id || book.name}
@@ -81,23 +94,31 @@ const Books = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <Text as="strong" fontWeight={700}>
+                        <Text as="strong" fontWeight={700} style={{ width: '33%', textAlign: 'center' }}>
                             {book.name}
                         </Text>
-                        <Text as="span">{book.description}</Text>
-                        {book.image && (
-                            <Image
-                                src={book.image}
-                                alt={`visual aid for ${book.name}`}
-                                style={{ width: 400 }}
-                            />
-                        )}
+                        <Text as="span" style={{ width: '33%', textAlign: 'center' }}>
+                            {book.description}
+                        </Text>
+                        <div style={{ width: '33%', textAlign: 'center' }}>
+                            {book.image && (
+                                <Image
+                                    src={book.image}
+                                    alt={`visual aid for ${book.name}`}
+                                    style={{ width: 100 }}
+                                />
+                            )}
+                        </div>
                         <Button variation="link" onClick={() => deleteBook(book)}>
                             Delete book
                         </Button>
                     </Flex>
                 ))}
             </View>
+
+
+
+
         </>
     )
 }
