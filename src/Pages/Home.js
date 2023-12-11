@@ -86,6 +86,8 @@ const Home = () => {
                         labelHidden
                         variation="quiet"
                         required
+                        style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '50px' }}
+
                     />
                     <TextField
                         name="description"
@@ -94,14 +96,16 @@ const Home = () => {
                         labelHidden
                         variation="quiet"
                         required
+                        style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '200px' }}
+
                     />
                     <View
                         name="image"
                         as="input"
                         type="file"
-                        style={{ alignSelf: "end" }}
+                        style={{ fontSize: "20px", paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px' }}
                     />
-                    <Button type="submit" variation="primary">
+                    <Button className="customButton" type="submit" variation="primary">
                         Add Book
                     </Button>
                 </Flex>

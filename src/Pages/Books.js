@@ -72,7 +72,7 @@ const Books = () => {
     }
     return (
         <>
-            <h1 className="add-books-heading">Current Books</h1>
+            <h1 className="add-books-heading">Available Books</h1>
             <View margin="3rem 0">
                 <Flex
                     direction="row"
@@ -80,10 +80,10 @@ const Books = () => {
                     alignItems="centre"
                     style={{ fontWeight: 'bold' }}
                 >
-                    <div style={{ width: '30%', textAlign: 'center' }}>Name</div>
-                    <div style={{ width: '40%', textAlign: 'center' }}>Description</div>
-                    <div style={{ width: '20%', textAlign: 'center' }}>Image</div>
-                    <div style={{ width: '10%', textAlign: 'center' }}>Delete</div>
+                    <div style={{ width: '20%', textAlign: 'left', fontSize: '20px', paddingLeft: '70px' }}>Book Name</div>
+                    <div style={{ width: '30%', textAlign: 'left', fontSize: '20px', paddingLeft: '60px' }}>Book Description</div>
+                    <div style={{ width: '30%', textAlign: 'left', fontSize: '20px', paddingLeft: '70px' }}>Book Cover</div>
+                    <div style={{ width: '10%', textAlign: 'left', fontSize: '20px', paddingLeft: '80px' }}>Delete</div>
 
                 </Flex>
 
@@ -94,13 +94,13 @@ const Books = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <Text as="strong" fontWeight={700} style={{ width: '33%', textAlign: 'center' }}>
+                        <Text as="strong" fontWeight={600} style={{ width: '20%', textAlign: 'left', fontSize: '15px' }}>
                             {book.name}
                         </Text>
-                        <Text as="span" style={{ width: '33%', textAlign: 'center' }}>
+                        <Text as="span" style={{ width: '30%', textAlign: 'left', fontSize: '15px' }}>
                             {book.description}
                         </Text>
-                        <div style={{ width: '33%', textAlign: 'center' }}>
+                        <div style={{ width: '30%', textAlign: 'left', fontSize: '15px' }}>
                             {book.image && (
                                 <Image
                                     src={book.image}
@@ -109,7 +109,7 @@ const Books = () => {
                                 />
                             )}
                         </div>
-                        <Button variation="link" onClick={() => deleteBook(book)}>
+                        <Button style={{ width: '10%' }} className="customButton" variation="link" onClick={() => deleteBook(book)}>
                             Delete book
                         </Button>
                     </Flex>

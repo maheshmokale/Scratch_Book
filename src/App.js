@@ -5,13 +5,11 @@ import Cart from './Pages/Cart';
 import Checkout from './Pages/Checkout';
 import Error from './Pages/Error';
 import Books from './Pages/Books';
-import "./App.css";
 import BookDetails from './Pages/BookDetails';
 import Header from './Component/Header';
 
 import { Amplify } from 'aws-amplify';
 import { Button, withAuthenticator } from '@aws-amplify/ui-react';
-import 'bootstrap/dist/css/bootstrap.css';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 Amplify.configure(config);

@@ -18,7 +18,7 @@ body {
 
 .add-books-heading {
 
-  font-size: 3em;
+  font-size: 50px;
   font-weight: bold;
   color: #c64646;
   text-align: center;
@@ -28,12 +28,37 @@ body {
 
 .website-heading {
 
-  font-size: 30;
+  font-size: 40px;
   font-weight: bold;
   color: #c0c0ea;
   text-align: left;
-  margin-top: 20px
+  margin-top: 10px
 }
+
+.customButton {
+  /* Your desired styles */
+  background-color: #3498db ! Important;
+  /* Change the color as per your preference */
+  color: #fff;
+  padding: 20px 20px 20px 20px ! Important;
+  border: none;
+  border-radius: 30px ! Important;
+  cursor: pointer;
+  font-size: 20px ! Important;
+  text-align: right ! Important;
+  float: right !important;
+  /* Add more styles as needed */
+}
+
+.customButton:hover {
+  /* Styles for when the mouse is over the button */
+  background-color: #2980b9;
+  /* Change the hover color */
+  /* Add more hover styles if desired */
+}
+
+
+
 
 li,
 button,

@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header className="main-head">
             <nav>
-                <h1 className='website-heading'>Wisdomly</h1>
+                <h1 className='website-heading'>Bookish Delights</h1>
                 <ul style={{ display: 'flex', listStyle: 'none', padding: 0 }}>
                     <li style={{ marginRight: '15px' }}>
                         <Link to="/">Home</Link>
