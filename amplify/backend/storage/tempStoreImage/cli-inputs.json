@@ -1,0 +1,14 @@
+{
+  "resourceName": "tempStoreImage",
+  "policyUUID": "f0751967",
+  "bucketName": "scratchbook27cba96e06c44f978536a0e150866282",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

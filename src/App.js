@@ -10,14 +10,19 @@ import BookDetails from './Pages/BookDetails';
 import Header from './Component/Header';
 
 import { Amplify } from 'aws-amplify';
-
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Button, withAuthenticator } from '@aws-amplify/ui-react';
+import 'bootstrap/dist/css/bootstrap.css';
+import '@aws-amplify/ui-react/styles.css';
+import config from './amplifyconfiguration.json';
+Amplify.configure(config);
 
 function App({ signOut, user }) {
   return (
     <>
       <>
         <Header></Header>
+
+        <Button onClick={signOut} className='customButton'>Sign Out</Button>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
