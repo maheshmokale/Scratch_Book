@@ -5,6 +5,8 @@ import Cart from './Pages/Cart';
 import Checkout from './Pages/Checkout';
 import Error from './Pages/Error';
 import Books from './Pages/Books';
+import Admin from './Pages/Admin';
+
 import BookDetails from './Pages/BookDetails';
 import Header from './Component/Header';
 
@@ -28,6 +30,8 @@ function App({ signOut, user }) {
           <Route path="/error" element={<Error />} />
           <Route path="/bookdetails" element={<BookDetails />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/admin" element={<Admin />} />
+
 
         </Routes>
       </>
