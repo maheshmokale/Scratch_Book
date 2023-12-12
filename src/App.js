@@ -16,13 +16,12 @@ import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
-function App({ signOut, user }) {
+function App() {
   return (
     <>
       <>
         <Header></Header>
 
-        <Button onClick={signOut} className='customButton'>Sign Out</Button>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
@@ -39,5 +38,5 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+export default App;
 

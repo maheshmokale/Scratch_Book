@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { generateClient } from 'aws-amplify/api';
 import { listBooks } from "../graphql/queries";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
-
 import {
     Button,
     Flex,
@@ -11,21 +10,41 @@ import {
     TextField,
     View,
     Image,
+    Authenticator,
 } from "@aws-amplify/ui-react";
 import {
     createBook as createBookMutation,
     deleteBook as deleteBookMutation,
 } from "../graphql/mutations";
-import Hero from "../Component/Hero";
+import { getCurrentUser } from "@aws-amplify/auth";
+
+
+
+
 const client = generateClient();
+
+
 
 
 const Books = () => {
     const [books, setBooks] = useState([]);
 
+    const [username, setUsername] = useState();
+
     useEffect(() => {
         fetchBooks();
+        currentAuthenticatedUser();
     }, []);
+
+
+    async function currentAuthenticatedUser() {
+        try {
+            const user = await getCurrentUser();
+            setUsername(user.username);
+        } catch (err) {
+            console.info("Guest User");
+        }
+    }
 
     async function fetchBooks() {
         const apiData = await client.graphql({ query: listBooks });
@@ -40,7 +59,6 @@ const Books = () => {
                         const url = await getUrl({
                             key: book.image
                         });
-                        console.log('File URL ', url);
                         book.image = url.url;
 
                     } catch (error) {
@@ -83,7 +101,7 @@ const Books = () => {
                     <div style={{ width: '20%', textAlign: 'left', fontSize: '20px', paddingLeft: '70px' }}>Book Name</div>
                     <div style={{ width: '30%', textAlign: 'left', fontSize: '20px', paddingLeft: '60px' }}>Book Description</div>
                     <div style={{ width: '30%', textAlign: 'left', fontSize: '20px', paddingLeft: '70px' }}>Book Cover</div>
-                    <div style={{ width: '10%', textAlign: 'left', fontSize: '20px', paddingLeft: '80px' }}>Delete</div>
+                    <div style={{ width: '10%', textAlign: 'left', fontSize: '20px', paddingLeft: '80px' }}>{username != undefined && username.length > 0 ? ("Delete") : ("Buy")}</div>
 
                 </Flex>
 
@@ -109,9 +127,30 @@ const Books = () => {
                                 />
                             )}
                         </div>
-                        <Button style={{ width: '10%' }} className="customButton" variation="link" onClick={() => deleteBook(book)}>
-                            Delete book
-                        </Button>
+                        <div>
+                            {username != undefined && username.length > 0 ? (
+                                <Button
+                                    style={{ width: '100%' }}
+                                    className="customButton"
+                                    variation="link"
+                                    onClick={() => deleteBook(book)}
+                                >
+                                    Delete book
+                                </Button>
+                            ) : (
+                                <Button
+                                    style={{ width: '100%' }}
+                                    className="customButton"
+                                    variation="link"
+                                    onClick={() => deleteBook(book)}
+                                >
+                                    Add to Cart
+                                </Button>
+                            )}
+                        </div>
+
+
+
                     </Flex>
                 ))}
             </View>

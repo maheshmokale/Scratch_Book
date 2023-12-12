@@ -7,12 +7,14 @@ import { generateClient } from 'aws-amplify/api';
 import { listBooks } from "../graphql/queries";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 
-import { Button, Flex, Heading, Text, TextField, View, Image, withAuthenticator } from "@aws-amplify/ui-react";
+import { Button, Flex, Heading, Text, TextField, View, useAuthenticator, Authenticator } from "@aws-amplify/ui-react";
 import { createBook as createBookMutation, deleteBook as deleteBookMutation, } from "../graphql/mutations";
+
 const client = generateClient();
 
 
-function Admin({ signOut, user }) {
+function Admin() {
+    //const { user, signOut } = useAuthenticator((context) => [context.user]);
 
     const [books, setBooks] = useState([]);
 
@@ -31,7 +33,6 @@ function Admin({ signOut, user }) {
                         const url = await getUrl({
                             key: book.image
                         });
-                        console.log('File URL ', url);
                         book.image = url.url;
 
                     } catch (error) {
@@ -58,11 +59,11 @@ function Admin({ signOut, user }) {
                 const result = await uploadData({
                     key: image.name,
                     data: image,
+
                     options: {
                         contentType: 'image/jpeg'
                     }
                 }).result;
-                console.log('Succeeded: ', result);
             } catch (error) {
                 console.log('Error : ', error);
             }
@@ -79,48 +80,58 @@ function Admin({ signOut, user }) {
     }
 
     return (
+
+
+
         <>
+            <Authenticator loginMechanisms={['username']} signUpAttributes={['email']}>
+                {({ signOut, user }) => (
+                    <View className="Admin">
+                        <h1 className="add-books-heading">Add Books</h1>
+                        <Button onClick={signOut} className='customButton'>Sign Out</Button>
 
-            <View className="Home">
-                <h1 className="add-books-heading">Add Books</h1>
-                <View as="form" margin="3rem 0" onSubmit={createBook}>
-                    <Flex direction="row" justifyContent="center">
-                        <TextField
-                            name="name"
-                            placeholder="Book Name"
-                            label="Book Name"
-                            labelHidden
-                            variation="quiet"
-                            required
-                            style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '50px' }}
+                        <View as="form" margin="3rem 0" onSubmit={createBook}>
+                            <Flex direction="row" justifyContent="center">
+                                <TextField
+                                    name="name"
+                                    placeholder="Book Name"
+                                    label="Book Name"
+                                    labelHidden
+                                    variation="quiet"
+                                    required
+                                    style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '50px' }}
 
-                        />
-                        <TextField
-                            name="description"
-                            placeholder="Book Description"
-                            label="Book Description"
-                            labelHidden
-                            variation="quiet"
-                            required
-                            style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '200px' }}
+                                />
+                                <TextField
+                                    name="description"
+                                    placeholder="Book Description"
+                                    label="Book Description"
+                                    labelHidden
+                                    variation="quiet"
+                                    required
+                                    style={{ fontSize: "20px", paddingTop: '20px', paddingLeft: '50px', paddingRight: '200px' }}
 
-                        />
-                        <View
-                            name="image"
-                            as="input"
-                            type="file"
-                            style={{ fontSize: "20px", paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px' }}
-                        />
-                        <Button className="customButton" type="submit" variation="primary">
-                            Add Book
-                        </Button>
-                    </Flex>
-                </View>
+                                />
+                                <View
+                                    name="image"
+                                    as="input"
+                                    type="file"
+                                    style={{ fontSize: "20px", paddingTop: '25px', paddingLeft: '50px', paddingRight: '50px' }}
+                                />
+                                <Button className="customButton" type="submit" variation="primary">
+                                    Add Book
+                                </Button>
+                            </Flex>
+                        </View>
 
-            </View>
+                    </View>
+                )}
+            </Authenticator>
+
+
         </>
     );
 }
 
-export default withAuthenticator(Admin);
+export default Admin;
 
