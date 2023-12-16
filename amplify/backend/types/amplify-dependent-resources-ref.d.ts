@@ -7,7 +7,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "scratchbookcaa6321f": {
+    "scratchbookeeb9021f": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -18,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "tempStoreImage": {
+    "imagestore": {
       "BucketName": "string",
       "Region": "string"
     }

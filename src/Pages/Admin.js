@@ -5,9 +5,9 @@ import '@aws-amplify/ui-react/styles.css';
 import React, { useState, useEffect } from "react";
 import { generateClient } from 'aws-amplify/api';
 import { listBooks } from "../graphql/queries";
-import { uploadData, getUrl, remove } from 'aws-amplify/storage';
+import { uploadData, getUrl } from 'aws-amplify/storage';
 
-import { Button, Flex, Heading, Text, TextField, View, useAuthenticator, Authenticator } from "@aws-amplify/ui-react";
+import { Button, Flex, TextField, View, Authenticator } from "@aws-amplify/ui-react";
 import { createBook as createBookMutation, deleteBook as deleteBookMutation, } from "../graphql/mutations";
 
 const client = generateClient();

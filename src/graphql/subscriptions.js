@@ -40,3 +40,45 @@ export const onDeleteBook = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCartItem = /* GraphQL */ `
+  subscription OnCreateCartItem($filter: ModelSubscriptionCartItemFilterInput) {
+    onCreateCartItem(filter: $filter) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateCartItem = /* GraphQL */ `
+  subscription OnUpdateCartItem($filter: ModelSubscriptionCartItemFilterInput) {
+    onUpdateCartItem(filter: $filter) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteCartItem = /* GraphQL */ `
+  subscription OnDeleteCartItem($filter: ModelSubscriptionCartItemFilterInput) {
+    onDeleteCartItem(filter: $filter) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;

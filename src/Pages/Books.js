@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { generateClient } from 'aws-amplify/api';
 import { listBooks } from "../graphql/queries";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
+import { Bookcontext } from "../Context/Bookcontext.js";
+
 import {
     Button,
     Flex,
@@ -17,6 +19,7 @@ import {
     deleteBook as deleteBookMutation,
 } from "../graphql/mutations";
 import { getCurrentUser } from "@aws-amplify/auth";
+import { Cartcontext } from "../Context/Cartcontext";
 
 
 
@@ -28,6 +31,7 @@ const client = generateClient();
 
 const Books = () => {
     const [books, setBooks] = useState([]);
+    const { addToCart } = useContext(Cartcontext);
 
     const [username, setUsername] = useState();
 
@@ -142,7 +146,7 @@ const Books = () => {
                                     style={{ width: '100%' }}
                                     className="customButton"
                                     variation="link"
-                                    onClick={() => deleteBook(book)}
+                                    onClick={() => addToCart(book)}
                                 >
                                     Add to Cart
                                 </Button>

@@ -35,3 +35,39 @@ export const listBooks = /* GraphQL */ `
     }
   }
 `;
+export const getCartItem = /* GraphQL */ `
+  query GetCartItem($id: ID!) {
+    getCartItem(id: $id) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listCartItems = /* GraphQL */ `
+  query ListCartItems(
+    $filter: ModelCartItemFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCartItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        image
+        price
+        amount
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;

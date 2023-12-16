@@ -49,3 +49,54 @@ export const deleteBook = /* GraphQL */ `
     }
   }
 `;
+export const createCartItem = /* GraphQL */ `
+  mutation CreateCartItem(
+    $input: CreateCartItemInput!
+    $condition: ModelCartItemConditionInput
+  ) {
+    createCartItem(input: $input, condition: $condition) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateCartItem = /* GraphQL */ `
+  mutation UpdateCartItem(
+    $input: UpdateCartItemInput!
+    $condition: ModelCartItemConditionInput
+  ) {
+    updateCartItem(input: $input, condition: $condition) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteCartItem = /* GraphQL */ `
+  mutation DeleteCartItem(
+    $input: DeleteCartItemInput!
+    $condition: ModelCartItemConditionInput
+  ) {
+    deleteCartItem(input: $input, condition: $condition) {
+      id
+      title
+      image
+      price
+      amount
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;

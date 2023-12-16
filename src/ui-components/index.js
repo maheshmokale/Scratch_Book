@@ -6,4 +6,6 @@
 
 export { default as BookCreateForm } from "./BookCreateForm";
 export { default as BookUpdateForm } from "./BookUpdateForm";
+export { default as CartItemCreateForm } from "./CartItemCreateForm";
+export { default as CartItemUpdateForm } from "./CartItemUpdateForm";
 export { default as studioTheme } from "./studioTheme";

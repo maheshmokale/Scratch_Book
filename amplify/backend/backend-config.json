@@ -4,7 +4,14 @@
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authscratchbookeeb9021f"
+              }
+            }
+          ],
           "defaultAuthentication": {
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7
@@ -18,7 +25,7 @@
     }
   },
   "auth": {
-    "scratchbookcaa6321f": {
+    "scratchbookeeb9021f": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -44,7 +51,7 @@
     }
   },
   "storage": {
-    "tempStoreImage": {
+    "imagestore": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
