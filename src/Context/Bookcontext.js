@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { processOrder } from "../graphql/mutations";
+//import { processOrder } from "../graphql/mutations";
 import { generateClient } from 'aws-amplify/api';
 
 import { listBooks } from '../graphql/queries';
@@ -26,12 +26,12 @@ const Bookprovider = ({ children }) => {
         };
         try {
 
-            await client.graphql({
-                query: processOrder,
-                variables: {
-                    input: payload
-                }
-            });
+            /*  await client.graphql({
+                  query: processOrder,
+                  variables: {
+                      input: payload
+                  }
+              });*/
             //await client.graphql(graphqlOperation(processOrder, { input: payload }));
             console.log("Order is successful");
         } catch (err) {
